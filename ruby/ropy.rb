@@ -164,14 +164,15 @@ class Ropy
 end
 
 if __FILE__ == $PROGRAM_NAME
-  puts "Ropy version 0.2"
+  STDERR.puts "Ropy version 0.2"
   source_file = ARGV.pop
   if source_file
-    puts "Executing file #{source_file}"
+    STDERR.puts "Executing file #{source_file}"
     ropy = Ropy.new File.read source_file
     ropy.silent = not(ARGV.include? "-v")
     ropy.execute
-    puts "Result => #{ropy.result}"
+    STDERR.puts "Result => #{ropy.result}"
+    puts ropy.result
   else
     puts "\nUsage:\n\tropy.rb [options] source_file\n\n"
     puts "  -v\tVerbose - display stack for each step in program"
